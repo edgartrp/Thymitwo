@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from WS2812 import Adeept_SPI_LedPixel
 import time
 
