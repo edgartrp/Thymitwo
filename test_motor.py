@@ -12,8 +12,9 @@ from adafruit_motor import motor
 MOTOR_IN1 =  15      #Define the positive pole of M1
 MOTOR_IN2 =  14      #Define the negative pole of M1
   
-def map(x,in_min,in_max,out_min,out_max):
-  return (x - in_min)/(in_max - in_min) *(out_max - out_min) +out_min
+def scale_value(x, in_min, in_max, out_min, out_max):
+  """Scale ``x`` from one range to another."""
+  return (x - in_min)/(in_max - in_min) *(out_max - out_min) + out_min
 
 
 i2c = busio.I2C(SCL, SDA)
@@ -28,7 +29,7 @@ def Motor(direction,motor_speed):
     motor_speed = 100
   elif motor_speed < 0:
     motor_speed = 0
-  speed = map(motor_speed, 0, 100, 0, 1.0)
+  speed = scale_value(motor_speed, 0, 100, 0, 1.0)
   if direction == -1:
     speed = -speed
   motor1.throttle = speed
