@@ -15,9 +15,14 @@ def set_angle(ID, angle):
 
 if __name__ == "__main__":
     boucle = True
-    while(boucle):
-        channel = int(input("channel :"))
-        angle = int(input("angle :"))
+    while boucle:
+        channel_input = input("channel :")
+        if channel_input == "exit":
+            break
+        angle_input = input("angle :")
+        if angle_input == "exit":
+            break
+
+        channel = int(channel_input)
+        angle = int(angle_input)
         set_angle(channel, angle)
-        if channel=="exit" or angle=="exit":
-            boucle = False
